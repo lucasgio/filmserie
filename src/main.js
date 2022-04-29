@@ -9,13 +9,13 @@ import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import VueCompositionAPI from '@vue/composition-api'
 
+Vue.use(VueCompositionAPI)
+
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
   vuetify,
-  VueCompositionAPI,
-
   render: h => h(App)
 }).$mount('#app')
