@@ -68,7 +68,7 @@
       </v-responsive>
     </v-app-bar>
 
-    <v-main class="secondary">
+    <v-main class="secondary mt-n3 rounded-lg">
       <router-view />
     </v-main>
   </v-app>
