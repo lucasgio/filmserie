@@ -7,7 +7,7 @@
     >
       <v-img
           class="fill-height"
-          :src="`${posterUrl}/${moviesNow.results[0].backdrop_path}`"
+          :src="`${ posterUrl }/${ moviesNow.results[0].backdrop_path }`"
           alt="poster_img"
       />
     </v-sheet>
@@ -28,7 +28,7 @@
         <v-card
             class="mx-auto mt-6 rounded-lg"
             max-width="250"
-            height="450"
+            height="500"
             elevation="5"
             color="accent"
             dark
@@ -63,6 +63,13 @@
               <v-list-item-subtitle>{{ movie.overview }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
+          <v-card-actions>
+            <router-link :to="{ name:'about', params:{ id: movie.id }}">
+              <v-btn fab color="primary" x-small>
+                <v-icon dark color="white"> fa-regular fa-eye</v-icon>
+              </v-btn>
+            </router-link>
+          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -76,8 +83,9 @@ import {ref} from "@vue/composition-api";
 export default {
   name: 'HomeView',
   setup() {
-    const imgUrl = ref('https://image.tmdb.org/t/p/w500')
 
+
+    const imgUrl = ref('https://image.tmdb.org/t/p/w500')
     const posterUrl = ref('https://image.tmdb.org/t/p/original')
     const {moviesNow, errorMessage} = useFetchMovieNow()
 
@@ -85,7 +93,8 @@ export default {
     return {
       moviesNow,
       imgUrl,
-      posterUrl
+      posterUrl,
+
     }
   }
 
