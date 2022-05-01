@@ -41,6 +41,7 @@
           <v-list-item
               v-for="(item, i) in listItem"
               :key="i"
+              :to="item.link"
           >
             <v-list-item-content>
               <v-list-item-title v-text="item.text"></v-list-item-title>
@@ -83,11 +84,10 @@ export default {
     const drawer   = ref(true)
     const model    = ref(null)
     const listItem = ref([
-      {text:"Peliculas estreno"},
-      {text:"Peliculas populares"},
-      {text:"Series populares"},
-      {text:"Series estreno"},
-      {text:"Proximos estrenos"},
+      {text:"Peliculas más populares", link:"/top-rated"},
+      {text:"Peliculas por estrenarse",link:"/upcoming"},
+      {text:"Series populares",link:"/tv-top-rated"},
+      {text:"Series estreno",link:"/tv-upcoming"},
     ])
 
     return {

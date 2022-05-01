@@ -19,6 +19,26 @@ const routes = [
     path: '/popular-movies',
     name: 'popular',
     component: () => import(/* webpackChunkName: "popular-movies" */ '../views/PopularMovies.vue')
+  },
+  {
+    path: '/top-rated',
+    name: 'topRated',
+    component: () => import(/* webpackChunkName: "top-rated-movies" */ '../views/MoviesTopRated.vue')
+  },
+  {
+    path: '/upcoming',
+    name: 'upcoming',
+    component: () => import(/* webpackChunkName: "upcoming-movies" */ '../views/MoviesUpcoming.vue')
+  },
+  {
+    path: '/tv-top-rated',
+    name: 'showsRated',
+    component: () => import(/* webpackChunkName: "tv-top-rated" */ '../views/PopularTvShow.vue')
+  },
+  {
+    path: '/tv-upcoming',
+    name: 'showsUpcoming',
+    component: () => import(/* webpackChunkName: "tv-show-upcoming" */ '../views/TvShowsUpcoming.vue')
   }
 ]
 

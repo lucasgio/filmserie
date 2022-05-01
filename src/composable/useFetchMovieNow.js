@@ -22,6 +22,33 @@ const useFetchMovieNow = () => {
    }
 
 
+   const getMoviesPopular = async (currentPage = 1) => {
+       await axios.get(`${url}/movie/popular?api_key=${api_key}&language=es-ES&page=${currentPage}`)
+           .then(resp => {
+               moviesNow.value = [
+                   ...moviesNow.value,
+                   ...resp.data.results
+               ]
+           })
+           .catch(error => errorMessage.value = error.response.data.message)
+   }
+
+
+   const getMoviesUpcoming = async (currentPage = 1) => {
+       await axios.get(`${url}/movie/upcoming?api_key=${api_key}&language=es-ES&page=${currentPage}`)
+           .then(resp => {
+               moviesNow.value = [
+                   ...moviesNow.value,
+                   ...resp.data.results
+               ]
+           })
+           .catch(error => errorMessage.value = error.response.data.message)
+   }
+
+
+
+
+
     const loadMore = () => getMovies(currentPage.value = currentPage.value + 1)
 
     return {
@@ -29,7 +56,9 @@ const useFetchMovieNow = () => {
         errorMessage,
 
         loadMore,
-        getMovies
+        getMovies,
+        getMoviesPopular,
+        getMoviesUpcoming
     }
 
 }
