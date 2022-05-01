@@ -65,7 +65,6 @@
             </v-list-item-content>
           </v-list-item>
           <v-card-actions>
-            <!-- TODO:// Crear el detalle de las series            -->
             <router-link :to="{ name:'detailSeries', params:{ id: tvShow.id }}">
               <v-btn fab color="primary" x-small>
                 <v-icon dark color="white"> fa-regular fa-eye</v-icon>

@@ -39,6 +39,11 @@ const routes = [
     path: '/tv-upcoming',
     name: 'showsUpcoming',
     component: () => import(/* webpackChunkName: "tv-show-upcoming" */ '../views/TvShowsUpcoming.vue')
+  },
+  {
+    path: '/info-series/:id',
+    name: 'detailSeries',
+    component: () => import(/* webpackChunkName: "tv-show-upcoming" */ '../views/AboutSeries.vue')
   }
 ]
 

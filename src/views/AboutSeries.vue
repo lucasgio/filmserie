@@ -17,7 +17,7 @@
             flat
             outlined
             tile
-            :img="`${urlImg}/${movieAbout.poster_path}`"
+            :img="`${urlImg}/${seriesAbout.poster_path}`"
         >
         </v-card>
       </v-col>
@@ -34,11 +34,13 @@
             flat
             tile
         >
-            <ListDetail
-                :data="movieAbout"
-            />
-            <p class="text-h6 text-center accent--text font-weight-bold">Cast</p>
-            <Info :cast="cast" />
+          <ListDetail
+              :data="seriesAbout"
+          />
+          <p class="text-h6 text-center accent--text font-weight-bold">Cast</p>
+          <Info
+              :cast="cast"
+          />
         </v-card>
       </v-col>
     </v-row>
@@ -49,16 +51,15 @@
 
 
 import axios from "axios";
-
 import ListDetail from "@/components/ListDetail";
 import Info from "@/components/Info";
 
 export default {
-  name: "AboutView",
+  name: "AboutSeries",
   components: { Info, ListDetail },
   data: () => ({
     id: null,
-    movieAbout: [],
+    seriesAbout: [],
     cast:[],
     api_key: "5962b5a668af804fc284b1e0a5ec4b9c",
     url: "https://api.themoviedb.org/3",
@@ -72,12 +73,12 @@ export default {
   watch: {
     id:async function (val) {
       try {
-        await axios.get(`${this.url}/movie/${this.id}?api_key=${this.api_key}&language=es-ES`)
-            .then(resp => this.movieAbout = resp.data)
+        await axios.get(`${this.url}/tv/${this.id}?api_key=${this.api_key}&language=es-ES`)
+            .then(resp => this.seriesAbout = resp.data)
             .catch(error => this.errorMessage = error.response.data.message)
         setTimeout( () => this.loading = false,3000)
 
-        await axios.get(`${this.url}/movie/${this.id}/credits?api_key=${this.api_key}&language=es-ES`)
+        await axios.get(`${this.url}/tv/${this.id}/credits?api_key=${this.api_key}&language=es-ES`)
             .then(resp => this.cast = resp.data)
             .catch(error => this.errorMessage = error.response.data.message)
         setTimeout( () => this.loading = false,3000)

@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  name: "InfoMovies",
+  name: "Info",
   props: {
     cast: {
       type:Object|Array,

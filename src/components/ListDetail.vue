@@ -11,10 +11,10 @@
           </v-list-item-content>
           <v-list-item-content>
             <v-list-item-title v-html="'Año'"></v-list-item-title>
-            <v-list-item-subtitle v-text="new Date(data.release_date).getFullYear()" />
+            <v-list-item-subtitle v-text=" new Date(data.release_date).getFullYear() || new Date(data.first_air_date).getFullYear() " />
           </v-list-item-content>
         </v-list-item>
-        <v-list-item>
+        <v-list-item v-if="data.budget">
           <v-list-item-content>
             <v-list-item-title v-html="'Presupuesto'"></v-list-item-title>
             <v-list-item-subtitle v-text="`$ ${ data.budget }`" />
@@ -68,8 +68,8 @@
 </template>
 
 <script>
-export default {
-  name: "ListDetailMovies",
+export default  {
+  name: "ListDetail",
   props: {
     data: {
       type:Object|Array,
