@@ -4,17 +4,14 @@
         v-if="moviesNow"
         fluid
     >
-      <v-sheet
+      <v-card
+          class="rounded-b-lg"
           height="500"
-          color="primary"
+          color="accent"
           outlined
-      >
-        <v-img
-            class="fill-height"
-            :src="`${ posterUrl }/${ moviesNow[0].backdrop_path }`"
-            alt="poster_img"
-        />
-      </v-sheet>
+          elevation="20"
+          :img="`${ posterUrl }/${ moviesNow[0].backdrop_path }`"
+      />
 
       <v-row
           justify="center"

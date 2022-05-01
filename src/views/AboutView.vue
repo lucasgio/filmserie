@@ -37,7 +37,7 @@
             <ListDetail
                 :data="movieAbout"
             />
-            <p class="text-h6 text-center accent--text font-weight-bold">Cast</p>
+            <p class="text-h6 text-center accent--text font-weight-bold">Reparto</p>
             <Info :cast="cast" />
         </v-card>
       </v-col>

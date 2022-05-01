@@ -57,7 +57,7 @@ export default {
   }),
   methods: {
     searchActorInfo(id) {
-
+      /*TODO:// Terminar la informacion acerca del actor */
     }
   },
 }

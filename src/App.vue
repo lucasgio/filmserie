@@ -51,50 +51,54 @@
 
       </v-list>
     </v-navigation-drawer>
-
-    <v-app-bar color="primary" dark app>
-      <v-app-bar-nav-icon
-          @click="drawer = !drawer"
-      />
-      <v-spacer/>
-      <v-responsive max-width="300">
-        <v-text-field
-            dense
-            flat
-            hide-details
-            rounded
-            solo-inverted
-            placeholder="Buscar por actor, película, serie"
-        ></v-text-field>
-      </v-responsive>
-    </v-app-bar>
-
     <v-main class="secondary mt-n3 rounded-lg">
-      <router-view />
+      <router-view/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import {ref} from "@vue/composition-api"
+import {ref, watch} from "@vue/composition-api"
+import useFetchSearch from "@/composable/useFetchSearch";
 
 export default {
   name: 'App',
   setup() {
-    const drawer   = ref(true)
-    const model    = ref(null)
+    const drawer = ref(true)
+    const model = ref(null)
+    const search = ref(null)
+    const urlImg = 'https://image.tmdb.org/t/p/original'
+
     const listItem = ref([
-      {text:"Inicio", link:"/"},
-      {text:"Peliculas más populares", link:"/top-rated"},
-      {text:"Peliculas por estrenarse",link:"/upcoming"},
-      {text:"Series populares",link:"/tv-top-rated"},
-      {text:"Series estreno",link:"/tv-upcoming"},
+      {text: "Inicio", link: "/"},
+      {text: "Peliculas más populares", link: "/top-rated"},
+      {text: "Peliculas por estrenarse", link: "/upcoming"},
+      {text: "Series populares", link: "/tv-top-rated"},
+      {text: "Series estreno", link: "/tv-upcoming"},
     ])
+
+
+    const {data, errorMessage, getSearchDB, loadMore} = useFetchSearch()
+
+    watch(
+        () => search.value,
+        (q) => {
+          q.length > 3
+              ? getSearchDB(q)
+              : data.value = []
+        }
+    )
 
     return {
       drawer,
       listItem,
-      model
+      model,
+      search,
+      data,
+      urlImg,
+      getSearchDB,
+      loadMore,
+
     }
   }
 
