@@ -3,6 +3,19 @@
       class="mb-10 fill-height"
       fluid
   >
+    <v-btn
+      fab
+      small
+      color="accent"
+      to="/"
+    >
+    <v-icon
+        color="white"
+    >
+      fa-long-arrow-alt-left
+    </v-icon>
+    </v-btn>
+
     <v-row justify="center" align="start">
       <v-col
           cols="12"
@@ -34,11 +47,20 @@
             flat
             tile
         >
-            <ListDetail
-                :data="movieAbout"
+            <Information
+                :data="{
+                  titulo:movieAbout.original_title,
+                  year:movieAbout.release_date,
+                  presupuesto:movieAbout.budget,
+                  recaudado:movieAbout.revenue,
+                }"
+                :genres="movieAbout.genres"
+                :production="movieAbout.production_companies"
+                :overview="movieAbout.overview"
             />
-            <p class="text-h6 text-center accent--text font-weight-bold">Reparto</p>
-            <Info :cast="cast" />
+            <Cast
+                :cast="cast"
+            />
         </v-card>
       </v-col>
     </v-row>
@@ -50,12 +72,12 @@
 
 import axios from "axios";
 
-import ListDetail from "@/components/ListDetail";
-import Info from "@/components/Info";
+import Cast from "@/components/about/Cast";
+import Information from "@/components/about/Information";
 
 export default {
   name: "AboutView",
-  components: { Info, ListDetail },
+  components: {Information, Cast },
   data: () => ({
     id: null,
     movieAbout: [],
@@ -64,7 +86,14 @@ export default {
     url: "https://api.themoviedb.org/3",
     errorMessage:null,
     urlImg:'https://image.tmdb.org/t/p/original',
-    loading:true
+    loading:true,
+    items: [
+      {
+        text: 'Atrás',
+        disabled: false,
+        href: '/',
+      },
+    ],
   }),
   created() {
     this.id = this.$route.params.id

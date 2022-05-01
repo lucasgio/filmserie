@@ -34,11 +34,16 @@
             flat
             tile
         >
-          <ListDetail
-              :data="seriesAbout"
+          <Information
+              :data="{
+                  titulo:seriesAbout.original_name,
+                  year:seriesAbout.first_air_date,
+                }"
+              :genres="seriesAbout.genres"
+              :production="seriesAbout.production_companies"
+              :overview="seriesAbout.overview"
           />
-          <p class="text-h6 text-center accent--text font-weight-bold">Cast</p>
-          <Info
+          <Cast
               :cast="cast"
           />
         </v-card>
@@ -51,12 +56,12 @@
 
 
 import axios from "axios";
-import ListDetail from "@/components/ListDetail";
-import Info from "@/components/Info";
+import Cast from "@/components/about/Cast";
+import Information from "@/components/about/Information";
 
 export default {
   name: "AboutSeries",
-  components: { Info, ListDetail },
+  components: {Information, Cast },
   data: () => ({
     id: null,
     seriesAbout: [],

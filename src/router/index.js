@@ -16,11 +16,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/popular-movies',
-    name: 'popular',
-    component: () => import(/* webpackChunkName: "popular-movies" */ '../views/PopularMovies.vue')
-  },
-  {
     path: '/top-rated',
     name: 'topRated',
     component: () => import(/* webpackChunkName: "top-rated-movies" */ '../views/MoviesTopRated.vue')
