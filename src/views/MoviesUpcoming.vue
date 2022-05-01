@@ -23,7 +23,7 @@
           lg="3"
           md="12"
           sm="12"
-          v-for="(movie,i) in moviesNow"
+          v-for="(movie,i) in moviesUpcoming"
           :key="i"
       >
         <v-card
@@ -89,7 +89,7 @@ export default {
     const posterUrl = ref('https://image.tmdb.org/t/p/original')
 
 
-    const { moviesNow,errorMessage,getMoviesUpcoming } = useFetchMovieNow()
+    const { moviesUpcoming,errorMessage,getMoviesUpcoming } = useFetchMovieNow()
 
 
     getMoviesUpcoming()
@@ -97,7 +97,7 @@ export default {
     return {
       imgUrl,
       posterUrl,
-      moviesNow,
+      moviesUpcoming,
 
     }
 

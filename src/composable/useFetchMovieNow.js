@@ -6,9 +6,11 @@ const url = "https://api.themoviedb.org/3"
 
 const useFetchMovieNow = () => {
 
-    const moviesNow    = ref([])
-    const errorMessage = ref('')
-    const currentPage  = ref(1)
+    const moviesNow       = ref([])
+    const moviePopular    = ref([])
+    const moviesUpcoming  = ref([])
+    const errorMessage    = ref('')
+    const currentPage     = ref(1)
 
    const getMovies = async (currentPage = 1) => {
        await axios.get(`${url}/movie/now_playing?api_key=${api_key}&language=es-ES&page=${currentPage}`)
@@ -25,8 +27,8 @@ const useFetchMovieNow = () => {
    const getMoviesPopular = async (currentPage = 1) => {
        await axios.get(`${url}/movie/popular?api_key=${api_key}&language=es-ES&page=${currentPage}`)
            .then(resp => {
-               moviesNow.value = [
-                   ...moviesNow.value,
+               moviePopular.value = [
+                   ...moviePopular.value,
                    ...resp.data.results
                ]
            })
@@ -37,8 +39,8 @@ const useFetchMovieNow = () => {
    const getMoviesUpcoming = async (currentPage = 1) => {
        await axios.get(`${url}/movie/upcoming?api_key=${api_key}&language=es-ES&page=${currentPage}`)
            .then(resp => {
-               moviesNow.value = [
-                   ...moviesNow.value,
+               moviesUpcoming.value = [
+                   ...moviesUpcoming.value,
                    ...resp.data.results
                ]
            })
@@ -53,6 +55,8 @@ const useFetchMovieNow = () => {
 
     return {
         moviesNow,
+        moviePopular,
+        moviesUpcoming,
         errorMessage,
 
         loadMore,
