@@ -98,7 +98,7 @@ export default {
       required: true
     },
     genres: {
-      type: Array,
+      type: Array|Object,
       default(rawProps) {
         return { message: 'No existen productoras' }
       },
@@ -111,7 +111,7 @@ export default {
       required: true
     },
     production: {
-      type: Object,
+      type: Object|Array,
       default(rawProps) {
         return { message: 'No existen reparto' }
       },
