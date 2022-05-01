@@ -84,6 +84,7 @@ export default {
     const drawer   = ref(true)
     const model    = ref(null)
     const listItem = ref([
+      {text:"Inicio", link:"/"},
       {text:"Peliculas más populares", link:"/top-rated"},
       {text:"Peliculas por estrenarse",link:"/upcoming"},
       {text:"Series populares",link:"/tv-top-rated"},
