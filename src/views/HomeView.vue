@@ -1,99 +1,80 @@
 <template>
-  <div class="mb-5">
-    <v-sheet
-        height="500"
-        color="primary"
-        outlined
+    <v-container
+        class="mb-5"
+        v-if="moviesNow"
+        fluid
     >
-      <v-img
-          class="fill-height"
-          :src="`${ posterUrl }/${ moviesNow.results[0].backdrop_path }`"
-          alt="poster_img"
+      <HeroCardComponent
+        :poster="moviesNow"
       />
-    </v-sheet>
 
-    <v-row
-        justify="center"
-        align="center"
-        class="mx-auto"
-    >
-      <v-col
-          cols="12"
-          lg="3"
-          md="12"
-          sm="12"
-          v-for="(movie,i) in moviesNow.results"
-          :key="i"
+      <v-row
+          justify="center"
+          align="center"
+          class="mx-auto"
+
       >
-        <v-card
-            class="mx-auto mt-6 rounded-lg"
-            max-width="250"
-            height="500"
-            elevation="5"
-            color="accent"
-            dark
+        <v-col
+            cols="12"
+            lg="3"
+            md="12"
+            sm="12"
+            v-for="(movie,i) in moviesNow"
+            :key="i"
         >
-          <v-hover v-slot="{ hover }">
-            <v-sheet
-                class="rounded-lg"
-                height="300"
-                color="primary"
-                :elevation="hover ? 14 : 0"
-                :class="{ 'on-hover': hover }"
-            >
-              <v-img
-                  class="fill-height rounded-lg"
-                  :src="`${imgUrl}/${movie.backdrop_path}`"
-                  alt="poster_img"
-              />
-            </v-sheet>
-          </v-hover>
-          <v-list-item three-line>
-            <v-list-item-content>
-              <v-list-item-title class="text-md font-weight-bold mb-1">
-                {{ movie.title.toUpperCase() }}
-              </v-list-item-title>
-              <div class="text-overline mb-1">
-                {{ new Date(movie.release_date).getFullYear() }}
-              </div>
-              <v-list-item-subtitle class="mb-1">
-                Valoración:
-                {{ movie.vote_average }}
-              </v-list-item-subtitle>
-              <v-list-item-subtitle>{{ movie.overview }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-card-actions>
-            <router-link :to="{ name:'about', params:{ id: movie.id }}">
-              <v-btn fab color="primary" x-small>
-                <v-icon dark color="white"> fa-regular fa-eye</v-icon>
-              </v-btn>
-            </router-link>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
-  </div>
+          <CardComponent
+            :movie="movie"
+          />
+        </v-col>
+        <v-btn
+            fab
+            color="accent"
+            @click="loadMore"
+        >
+          <v-icon
+              dark
+              color="primary"
+          >
+            fa-regular fa-sync
+          </v-icon>
+        </v-btn>
+      </v-row>
+    </v-container>
 </template>
 
 <script>
+
+
 import useFetchMovieNow from "@/composable/useFetchMovieNow";
-import {ref} from "@vue/composition-api";
+
+import CardComponent from "@/components/ui/CardMovieComponent";
+import HeroComponent from "@/components/ui/HeroCardComponent";
+import HeroCardComponent from "@/components/ui/HeroCardComponent";
 
 export default {
   name: 'HomeView',
+  components: {
+    HeroCardComponent,
+    HeroComponent,
+    CardComponent
+  },
   setup() {
 
 
-    const imgUrl = ref('https://image.tmdb.org/t/p/w500')
-    const posterUrl = ref('https://image.tmdb.org/t/p/original')
-    const {moviesNow, errorMessage} = useFetchMovieNow()
+    const {
+      moviesNow,
+      errorMessage,
+      getMovies,
+      loadMore
+    } = useFetchMovieNow()
 
+    getMovies()
 
     return {
       moviesNow,
-      imgUrl,
-      posterUrl,
+
+
+      loadMore
 
     }
   }
@@ -102,7 +83,7 @@ export default {
 </script>
 <style scoped>
 .v-card {
-  transition: opacity .6s ease-in-out;
+  transition: opacity .2s ease-in;
 }
 
 .v-card:not(.on-hover) {
