@@ -3,19 +3,21 @@
       class="mx-auto mt-6 rounded-lg"
       max-width="300"
       height="500"
-      elevation="5"
-      color="accent"
+      color="secondary"
       dark
+      flat
   >
     <v-hover v-slot="{ hover }">
       <v-sheet
           class="rounded-lg"
           height="300"
-          color="primary"
+          color="accent"
+          outlined
           :elevation="hover ? 24 : 0"
           :class="{ 'on-hover': hover }"
       >
         <v-img
+            :lazy-src="require(`@/assets/no-img.png`)"
             class="fill-height rounded-lg"
             :src="`${imgUrl}/${tvShow.backdrop_path}`"
             alt="poster_img"
@@ -24,23 +26,31 @@
     </v-hover>
     <v-list-item three-line>
       <v-list-item-content>
-        <v-list-item-title class="text-md font-weight-bold mb-1">
-          {{ tvShow.original_name.toUpperCase()}}
-        </v-list-item-title>
-        <div class="text-overline mb-1">
-          {{ new Date(tvShow.first_air_date).getFullYear() }}
-        </div>
+        <v-list-item-title class="text-md font-weight-bold mb-1" v-text="tvShow.original_name.toUpperCase()"/>
+        <div class="text-overline mb-1" v-text="new Date(tvShow.first_air_date).getFullYear()" />
         <v-list-item-subtitle class="mb-1">
-          Valoración:
-          {{ tvShow.vote_average }}
+          <span>Valoración:</span> {{ tvShow.vote_average }}
         </v-list-item-subtitle>
-        <v-list-item-subtitle>{{ tvShow.overview }}</v-list-item-subtitle>
+        <v-list-item-subtitle
+            v-text="tvShow.overview"
+        />
       </v-list-item-content>
     </v-list-item>
-    <v-card-actions>
+    <v-card-actions
+      :class="tvShow.overview === '' && 'mt-8'"
+    >
       <router-link :to="{ name:'detailSeries', params:{ id: tvShow.id }}">
-        <v-btn fab color="primary" x-small>
-          <v-icon dark color="white"> fa-regular fa-eye</v-icon>
+        <v-btn
+            fab
+            color="accent"
+            x-small
+        >
+          <v-icon
+              dark
+              color="white"
+          >
+            fa-info
+          </v-icon>
         </v-btn>
       </router-link>
     </v-card-actions>

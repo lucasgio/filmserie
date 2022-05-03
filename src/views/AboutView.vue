@@ -104,7 +104,6 @@ export default {
     ],
   }),
   created() {
-    this.loading = true
     this.id = this.$route.params.id
   },
   watch: {

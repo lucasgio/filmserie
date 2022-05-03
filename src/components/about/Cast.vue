@@ -28,7 +28,7 @@
         >
           <v-card
               class="ma-1"
-              height="350"
+              height="360"
               width="150"
               elevation="0"
               color="secondary"
@@ -38,6 +38,7 @@
                 max-height="250"
                 max-width="250"
                 class="rounded-lg"
+                :lazy-src="require(`@/assets/no-img.png`)"
                 :src="`${ actorImg }/${ actor.profile_path }`"
                 alt="poster_actor"
             />

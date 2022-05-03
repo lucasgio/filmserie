@@ -22,7 +22,7 @@
           v-for="(movie,i) in moviesNow"
           :key="i"
       >
-        <CardComponent
+        <CardMovieComponent
             :movie="movie"
         />
       </v-col>
@@ -48,7 +48,7 @@
 
 import useFetchMovieNow from "@/composable/useFetchMovieNow";
 
-import CardComponent from "@/components/ui/CardMovieComponent";
+import CardMovieComponent from "@/components/ui/CardMovieComponent";
 import HeroComponent from "@/components/ui/HeroCardComponent";
 import HeroCardComponent from "@/components/ui/HeroCardComponent";
 
@@ -58,7 +58,7 @@ export default {
   components: {
     HeroCardComponent,
     HeroComponent,
-    CardComponent
+    CardMovieComponent
   },
   setup() {
 
@@ -82,11 +82,5 @@ export default {
 }
 </script>
 <style scoped>
-.v-card {
-  transition: opacity .2s ease-in;
-}
 
-.v-card:not(.on-hover) {
-  opacity: 0.9;
-}
 </style>
