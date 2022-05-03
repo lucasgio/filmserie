@@ -22,6 +22,19 @@
           :movie="movie"
         />
       </v-col>
+      <v-btn
+          fab
+          color="accent"
+          @click="loadMoreMovieUpcoming"
+          v-show="moviesUpcoming"
+      >
+        <v-icon
+            dark
+            color="primary"
+        >
+          fa-regular fa-sync
+        </v-icon>
+      </v-btn>
     </v-row>
   </v-container>
 </template>
@@ -42,7 +55,7 @@ export default {
     const posterUrl = ref('https://image.tmdb.org/t/p/original')
 
 
-    const { moviesUpcoming,errorMessage,getMoviesUpcoming } = useFetchMovieNow()
+    const { moviesUpcoming,errorMessage,getMoviesUpcoming, loadMoreMovieUpcoming } = useFetchMovieNow()
 
 
     getMoviesUpcoming()
@@ -51,6 +64,8 @@ export default {
       imgUrl,
       posterUrl,
       moviesUpcoming,
+
+      loadMoreMovieUpcoming
 
     }
 

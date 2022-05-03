@@ -21,6 +21,19 @@
           :movie="movie"
         />
       </v-col>
+      <v-btn
+          fab
+          color="accent"
+          @click="loadMoreMoviePopular"
+          v-show="moviePopular"
+      >
+        <v-icon
+            dark
+            color="primary"
+        >
+          fa-regular fa-sync
+        </v-icon>
+      </v-btn>
     </v-row>
   </v-container>
 </template>
@@ -41,7 +54,7 @@ export default {
     const posterUrl = ref('https://image.tmdb.org/t/p/original')
 
 
-    const { moviePopular,errorMessage,getMoviesPopular } = useFetchMovieNow()
+    const { moviePopular,errorMessage,getMoviesPopular,loadMoreMoviePopular } = useFetchMovieNow()
 
 
     getMoviesPopular()
@@ -50,6 +63,8 @@ export default {
       imgUrl,
       posterUrl,
       moviePopular,
+
+      loadMoreMoviePopular
 
     }
 

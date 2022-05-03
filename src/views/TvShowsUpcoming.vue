@@ -22,6 +22,19 @@
           :tv-show="tvShow"
         />
       </v-col>
+      <v-btn
+          fab
+          color="accent"
+          @click="loadMoreTvShowUpcoming"
+          v-show="tvShowsOnAir"
+      >
+        <v-icon
+            dark
+            color="primary"
+        >
+          fa-regular fa-sync
+        </v-icon>
+      </v-btn>
     </v-row>
   </v-container>
 </template>
@@ -40,7 +53,7 @@ export default {
     const imgUrl = ref('https://image.tmdb.org/t/p/w500')
 
 
-    const { tvShowsOnAir,errorMessage,getTvShowsUpcoming } = useFetchTvShow()
+    const { tvShowsOnAir,errorMessage,getTvShowsUpcoming,loadMoreTvShowUpcoming } = useFetchTvShow()
 
 
     getTvShowsUpcoming()
@@ -48,6 +61,8 @@ export default {
     return {
       imgUrl,
       tvShowsOnAir,
+
+      loadMoreTvShowUpcoming
 
     }
 

@@ -2,7 +2,7 @@
   <v-overlay
       :absolute="absolute"
       :value="overlay"
-      :opacity="0.8"
+      :opacity="1"
   >
     <v-row justify="center" align="center">
       <v-col cols="12">
