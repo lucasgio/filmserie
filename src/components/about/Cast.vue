@@ -28,14 +28,15 @@
         >
           <v-card
               class="ma-1"
-              height="250"
+              height="300"
               width="150"
               elevation="0"
               color="secondary"
               @click="searchActorInfo(actor.name)"
           >
             <v-img
-                height="150"
+                max-height="250"
+                max-width="250"
                 class="rounded-lg"
                 :src="`${ actorImg }/${ actor.profile_path }`"
                 alt="poster_actor"
