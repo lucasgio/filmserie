@@ -28,7 +28,7 @@
         >
           <v-card
               class="ma-1"
-              height="300"
+              height="350"
               width="150"
               elevation="0"
               color="secondary"

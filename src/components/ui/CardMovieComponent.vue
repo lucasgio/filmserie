@@ -40,7 +40,7 @@
     <v-card-actions>
       <router-link :to="{ name:'about', params:{ id: movie.id }}">
         <v-btn fab color="primary" x-small>
-          <v-icon dark color="white"> fa-regular fa-eye</v-icon>
+          <v-icon dark color="white"> fa-info</v-icon>
         </v-btn>
       </router-link>
     </v-card-actions>
