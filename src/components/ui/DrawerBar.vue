@@ -22,6 +22,13 @@
           </v-list-item-title>
           <v-list-item-subtitle>Busca tu multimedia favorita en un solo lugar</v-list-item-subtitle>
         </v-list-item-content>
+        <v-list-item-avatar
+            tile
+            size="100"
+            color="accent"
+        >
+          <v-img :src="require(`@/assets/popcorn.gif`)" />
+        </v-list-item-avatar>
       </v-list-item>
     </v-card>
 
