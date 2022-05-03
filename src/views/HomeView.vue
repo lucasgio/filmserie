@@ -12,7 +12,6 @@
           justify="center"
           align="center"
           class="mx-auto"
-
       >
         <v-col
             cols="12"
@@ -30,6 +29,7 @@
             fab
             color="accent"
             @click="loadMore"
+            v-show="moviesNow"
         >
           <v-icon
               dark

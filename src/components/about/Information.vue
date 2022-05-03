@@ -21,6 +21,11 @@
                   v-html="i"
               />
               <v-list-item-subtitle
+                v-if="i === 'director'"
+                v-html="data.name"
+              />
+              <v-list-item-subtitle
+                  v-else
                   v-text="data"
               />
             </v-list-item-content>

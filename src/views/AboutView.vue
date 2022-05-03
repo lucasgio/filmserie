@@ -1,6 +1,6 @@
 <template>
   <v-container
-      class="mb-10 fill-height"
+      class="fill-height"
       fluid
   >
     <v-btn
@@ -50,9 +50,7 @@
             <Information
                 :data="{
                   titulo:movieAbout.original_title,
-                  year:movieAbout.release_date,
-                  presupuesto:movieAbout.budget,
-                  recaudado:movieAbout.revenue,
+                  year:new Date(movieAbout.release_date).getFullYear(),
                 }"
                 :genres="movieAbout.genres"
                 :production="movieAbout.production_companies"
