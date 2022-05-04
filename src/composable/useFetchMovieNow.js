@@ -51,7 +51,9 @@ const useFetchMovieNow = () => {
 
 
 
-    const loadMore = () => getMovies(currentPage.value = currentPage.value + 1)
+    const loadMoreMovieNow = () => getMovies(currentPage.value = currentPage.value + 1)
+    const loadMoreMoviePopular = () => getMoviesPopular(currentPage.value = currentPage.value + 1)
+    const loadMoreMovieUpcoming = () => getMoviesUpcoming(currentPage.value = currentPage.value + 1)
 
     return {
         moviesNow,
@@ -59,7 +61,9 @@ const useFetchMovieNow = () => {
         moviesUpcoming,
         errorMessage,
 
-        loadMore,
+        loadMoreMovieNow,
+        loadMoreMoviePopular,
+        loadMoreMovieUpcoming,
         getMovies,
         getMoviesPopular,
         getMoviesUpcoming

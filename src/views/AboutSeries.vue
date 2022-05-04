@@ -1,55 +1,74 @@
 <template>
-  <v-container
-      class="mb-10 fill-height"
-      fluid
-  >
-    <v-row justify="center" align="start">
-      <v-col
-          cols="12"
-          lg="4"
-          md="12"
-          sm="12"
+  <div>
+    <LoadingComponent
+        :show="loading"
+        @close-spinner="loading = !loading"
+    />
+    <v-container
+        class="mb-10 fill-height"
+        fluid
+    >
+      <v-btn
+          class="ma-8"
+          fab
+          small
+          color="accent"
+          to="/"
       >
-        <v-card
-            class="rounded-lg mx-auto"
-            color="accent"
-            height="750"
-            flat
-            outlined
-            tile
-            :img="`${urlImg}/${seriesAbout.poster_path}`"
+        <v-icon
+            color="white"
         >
-        </v-card>
-      </v-col>
-      <v-col
-          cols="12"
-          lg="8"
-          md="12"
-          sm="12"
-      >
-        <v-card
-            class="rounded-lg"
-            color="secondary"
-            height="600"
-            flat
-            tile
+          fa-long-arrow-alt-left
+        </v-icon>
+      </v-btn>
+      <v-row justify="center" align="start">
+        <v-col
+            cols="12"
+            lg="4"
+            md="12"
+            sm="12"
         >
-          <Information
-              :data="{
+          <v-card
+              class="rounded-lg mx-auto"
+              color="accent"
+              height="750"
+              flat
+              outlined
+              tile
+              :img="`${urlImg}/${seriesAbout.poster_path}`"
+          >
+          </v-card>
+        </v-col>
+        <v-col
+            cols="12"
+            lg="8"
+            md="12"
+            sm="12"
+        >
+          <v-card
+              class="rounded-lg"
+              color="secondary"
+              height="600"
+              flat
+              tile
+          >
+            <Information
+                :data="{
                   titulo:seriesAbout.original_name,
                   year:seriesAbout.first_air_date,
                 }"
-              :genres="seriesAbout.genres"
-              :production="seriesAbout.production_companies"
-              :overview="seriesAbout.overview"
-          />
-          <Cast
-              :cast="cast"
-          />
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+                :genres="seriesAbout.genres"
+                :production="seriesAbout.production_companies"
+                :overview="seriesAbout.overview"
+            />
+            <Cast
+                :cast="cast"
+            />
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -58,10 +77,11 @@
 import axios from "axios";
 import Cast from "@/components/about/Cast";
 import Information from "@/components/about/Information";
+import LoadingComponent from "@/components/ui/LoadingComponent";
 
 export default {
   name: "AboutSeries",
-  components: {Information, Cast },
+  components: {Information, Cast, LoadingComponent },
   data: () => ({
     id: null,
     seriesAbout: [],

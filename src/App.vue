@@ -3,7 +3,7 @@
       id="inspire"
   >
     <DrawerBar/>
-    <v-main class="secondary mt-n4 rounded-lg">
+    <v-main class="secondary mt-n4">
       <router-view/>
     </v-main>
   </v-app>

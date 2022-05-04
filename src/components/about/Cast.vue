@@ -5,6 +5,7 @@
         text-h5
         text-uppercase
         text-decoration-overline
+        font-weight-bold
         mx-8
         mt-5
         accent--text"
@@ -27,20 +28,27 @@
         >
           <v-card
               class="ma-1"
-              height="250"
+              height="360"
               width="150"
               elevation="0"
               color="secondary"
-              @click="searchActorInfo(actor.id)"
+              @click="searchActorInfo(actor.name)"
           >
             <v-img
-                height="200"
+                max-height="250"
+                max-width="250"
                 class="rounded-lg"
+                :lazy-src="require(`@/assets/no-img.png`)"
                 :src="`${ actorImg }/${ actor.profile_path }`"
                 alt="poster_actor"
             />
             <v-card-subtitle
-                class="text-center"
+                class="text-center mb-n4"
+            >
+              {{ actor.character }}
+            </v-card-subtitle>
+            <v-card-subtitle
+                class="text-center accent--text font-weight-bold"
             >
               {{ actor.name }}
             </v-card-subtitle>
@@ -70,8 +78,8 @@ export default {
     actorImg:'https://image.tmdb.org/t/p/w500',
   }),
   methods: {
-    searchActorInfo(id) {
-      /*TODO:// Terminar la informacion acerca del actor */
+    searchActorInfo(name) {
+      this.$router.push( { name:'actor', params:{ name }} )
     }
   },
 }

@@ -2,7 +2,7 @@
   <v-card
       v-if="imagePoster"
       class="rounded-b-lg"
-      height="500"
+      height="550"
       color="accent"
       outlined
       elevation="20"

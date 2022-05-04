@@ -22,6 +22,19 @@
           :tv-show="tvShow"
         />
       </v-col>
+      <v-btn
+          fab
+          color="accent"
+          @click="loadMoreTvShow"
+          v-show="tvShowsPopular"
+      >
+        <v-icon
+            dark
+            color="primary"
+        >
+          fa-regular fa-sync
+        </v-icon>
+      </v-btn>
     </v-row>
   </v-container>
 </template>
@@ -37,13 +50,15 @@ export default {
   components: {CardShowComponent, BannerCardComponent},
   setup() {
 
-    const { tvShowsPopular,errorMessage,getPopularTvShows } = useFetchTvShow()
+    const { tvShowsPopular,errorMessage,getPopularTvShows,loadMoreTvShow } = useFetchTvShow()
 
 
     getPopularTvShows()
 
     return {
       tvShowsPopular,
+
+      loadMoreTvShow
 
     }
 

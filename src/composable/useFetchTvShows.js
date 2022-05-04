@@ -34,41 +34,20 @@ const useFetchTvShow = () => {
     }
 
 
-/*    const getMoviesPopular = async (currentPage = 1) => {
-        await axios.get(`${url}/movie/popular?api_key=${api_key}&language=es-ES&page=${currentPage}`)
-            .then(resp => {
-                tvShows.value = [
-                    ...tvShows.value,
-                    ...resp.data.results
-                ]
-            })
-            .catch(error => errorMessage.value = error.response.data.message)
-    }
-
-
-    const getMoviesUpcoming = async (currentPage = 1) => {
-        await axios.get(`${url}/movie/upcoming?api_key=${api_key}&language=es-ES&page=${currentPage}`)
-            .then(resp => {
-                tvShows.value = [
-                    ...tvShows.value,
-                    ...resp.data.results
-                ]
-            })
-            .catch(error => errorMessage.value = error.response.data.message)
-    }*/
 
 
 
 
-
-    const loadMore = () => getPopularTvShows(currentPage.value = currentPage.value + 1)
+    const loadMoreTvShow = () => getPopularTvShows(currentPage.value = currentPage.value + 1)
+    const loadMoreTvShowUpcoming = () => getTvShowsUpcoming(currentPage.value = currentPage.value + 1)
 
     return {
         tvShowsPopular,
         tvShowsOnAir,
         errorMessage,
 
-        loadMore,
+        loadMoreTvShow,
+        loadMoreTvShowUpcoming,
         getPopularTvShows,
         getTvShowsUpcoming
     }
